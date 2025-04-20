@@ -1,0 +1,24 @@
+:host {
+    --color-primary: #EEC52F;
+    --color-secondary: #53D9E0;
+    --color-dark: #2E3047;
+    --color-light: #EFF0F4;
+    --font-family-title: SpaceMono;
+    --font-family-content: Comfortaa;
+    --font-family-icon: StudoIcon;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-family-content), sans-serif;
+}
+
+button {
+    border: none;
+    background-color: var(--color-primary);
+    border-radius: 4px;
+    padding: 12px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 700;
+}

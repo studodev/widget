@@ -19,6 +19,7 @@ export class WidgetManager {
 
     buildWidget(widgetModule: WidgetModule, host: HTMLElement) {
         new widgetModule.Widget(host);
+        delete host.dataset.state;
     }
 }
 
