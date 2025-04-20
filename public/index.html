@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noindex">
+        <title>Widget</title>
+
+        <style>
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                margin: 0;
+                background-color: #222435;
+            }
+
+            [data-widget] {
+                position: relative;
+                width: 90%;
+                min-height: 200px;
+                margin: 0 auto 24px;
+                padding: 20px;
+                background-color: #2E3047;
+                border: 1px solid #53D9E0;
+                border-radius: 8px;
+                overflow: hidden;
+
+                &:before {
+                    content: "Démo";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    padding: 4px 12px;
+                    border-bottom-right-radius: 8px;
+                    background-color: #EEC52F;
+                    font-family: var(--font-family-title), sans-serif;
+                    font-size: 1rem;
+                    font-weight: 700;
+                    color: #2E3047;
+                }
+            }
+        </style>
+        <script type="module" src="widget.js" defer></script>
+    </head>
+    <body>
+        <!-- TODO - Disable demo mode in production -->
+        <div data-widget="web-speech-api/custom-synthesis"></div>
+    </body>
+</html>
