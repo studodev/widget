@@ -20,14 +20,13 @@
 
 label {
     font-family: var(--font-family-title), sans-serif;
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 500;
 }
 
 input[type="text"], input[type="range"], select {
     width: 100%;
     background-color: var(--color-light);
-    padding: 8px;
 
 }
 
@@ -35,10 +34,12 @@ input[type="text"], select {
     border-radius: 4px;
     font-size: 1rem;
     border: none;
+    padding: 8px;
 }
 
 input[type="range"] {
     color: var(--color-primary);
+    padding: 4px;
 }
 
 button {
