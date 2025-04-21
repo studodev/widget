@@ -67,7 +67,10 @@ export class Widget extends AbstractWidget {
         utterance.volume = Number(data.volume);
 
         speechSynthesis.cancel();
-        speechSynthesis.speak(utterance);
+
+        setTimeout(() => {
+            speechSynthesis.speak(utterance);
+        }, 200);
     }
 
     private findVoice(name: string) {
