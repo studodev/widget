@@ -9,10 +9,13 @@
         <style>
             body {
                 display: flex;
+                flex-direction: column;
+                gap: 32px;
                 justify-content: center;
                 align-items: center;
                 min-height: 100vh;
                 margin: 0;
+                padding: 20px;
                 background-color: #222435;
             }
 
@@ -47,7 +50,7 @@
     <body>
         <!-- TODO - Disable demo mode in production -->
         <div data-widget="web-speech-api/live-transcription"></div>
-        <div data-widget="web-speech-api/hello-synthesis"></div>
         <div data-widget="web-speech-api/custom-synthesis"></div>
+        <div data-widget="web-speech-api/hello-synthesis"></div>
     </body>
 </html>
