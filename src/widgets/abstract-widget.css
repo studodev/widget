@@ -19,6 +19,7 @@
     box-sizing: border-box;
 }
 
+/* ----- Form ----- */
 label {
     font-family: var(--font-family-title), sans-serif;
     font-size: 1rem;
@@ -54,8 +55,13 @@ button {
     font-weight: 700;
 }
 
+/* ----- Utils ----- */
 .hidden {
     display: none!important;
+}
+
+.important {
+    font-weight: 700;
 }
 
 .error {
@@ -78,8 +84,4 @@ button {
         background-color: var(--color-alert);
         color: var(--color-light);
     }
-}
-
-.important {
-    font-weight: 700;
 }
