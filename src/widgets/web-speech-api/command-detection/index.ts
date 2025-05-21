@@ -12,8 +12,8 @@ export class Widget extends AbstractWidget {
 
         this.elements = {
             wrapper: this.host.getElementById('wrapper') as HTMLElement,
-            button: this.host.getElementById('transcript-trigger') as HTMLButtonElement,
-            result: this.host.getElementById('transcript-result') as HTMLParagraphElement,
+            button: this.host.getElementById('trigger') as HTMLButtonElement,
+            box: this.host.getElementById('box') as HTMLElement,
             notSupported: this.host.getElementById('not-supported') as HTMLElement,
         };
 
@@ -42,20 +42,19 @@ export class Widget extends AbstractWidget {
         this.recognition = new SpeechRecognition();
         this.recognition.continuous = true;
         this.recognition.lang = 'fr-FR';
-        this.recognition.interimResults = true;
 
         this.recognition.addEventListener('start', () => {
             this.isListening = true;
-            this.elements.button.textContent = 'Arrêter la transcription';
+            this.elements.button.textContent = 'Arrêter le contrôle vocal';
         });
 
         this.recognition.addEventListener('end', () => {
             this.isListening = false;
-            this.elements.button.textContent = 'Démarrer la transcription';
+            this.elements.button.textContent = 'Démarrer le contrôle vocal';
         });
 
         this.recognition.addEventListener('result', (event: any) => {
-            this.transcript(event.results)
+            this.move(event.results)
         });
 
         return true;
@@ -63,11 +62,11 @@ export class Widget extends AbstractWidget {
 
     private bindEvents(): void {
         this.elements.button.addEventListener('click', () => {
-            this.triggerTranscription();
+            this.triggerControl();
         });
     }
 
-    private triggerTranscription(): void {
+    private triggerControl(): void {
         if (this.isListening) {
             this.recognition.stop();
         } else {
@@ -75,14 +74,8 @@ export class Widget extends AbstractWidget {
         }
     }
 
-    private transcript(results: SpeechRecognitionResult[]): void {
-        let transcription = '';
-
-        for (const result of results) {
-            transcription += result[0].transcript;
-        }
-
-        this.elements.result.textContent = transcription;
+    private move(results: SpeechRecognitionResult[]): void {
+        console.log(results[results.length - 1]);
     }
 
     private displayNotSupportedWarning(): void {
@@ -94,7 +87,7 @@ export class Widget extends AbstractWidget {
 interface WidgetElements {
     wrapper: HTMLElement;
     button: HTMLButtonElement;
-    result: HTMLParagraphElement;
+    box: HTMLElement;
     notSupported: HTMLElement;
 }
 

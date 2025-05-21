@@ -7,6 +7,7 @@ export const widgetManifest: Record<string, () => Promise<WidgetModule>> = {
     'web-speech-api/hello-synthesis': () => import(`${host}/widgets/web-speech-api/hello-synthesis/index.js`),
     'web-speech-api/custom-synthesis': () => import(`${host}/widgets/web-speech-api/custom-synthesis/index.js`),
     'web-speech-api/live-transcription': () => import(`${host}/widgets/web-speech-api/live-transcription/index.js`),
+    'web-speech-api/command-detection': () => import(`${host}/widgets/web-speech-api/command-detection/index.js`),
 };
 
 export type WidgetModule = {
