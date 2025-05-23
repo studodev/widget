@@ -3,6 +3,7 @@ import styles from "./styles.css?raw";
 import { AbstractWidget } from "../../abstract-widget.ts";
 
 export class Widget extends AbstractWidget {
+    private readonly directions = ['gauche', 'haut', 'droite', 'bas'];
     private elements: WidgetElements;
     private recognition: any;
     private isListening: boolean = false;
@@ -75,7 +76,48 @@ export class Widget extends AbstractWidget {
     }
 
     private move(results: SpeechRecognitionResult[]): void {
-        console.log(results[results.length - 1]);
+        const lastResult = results[results.length - 1];
+
+        if (!lastResult) {
+            return;
+        }
+
+        const text = lastResult[0].transcript.toLowerCase().trim();
+
+        for (const direction of this.directions) {
+            if (!text.includes(direction)) {
+                continue;
+            }
+
+            const styles = getComputedStyle(this.elements.box);
+            let row = parseInt(styles.getPropertyValue('--row'));
+            let column = parseInt(styles.getPropertyValue('--column'));
+
+            switch (direction) {
+                case 'haut':
+                    row--;
+                    break;
+                case 'bas':
+                    row++;
+                    break;
+                case 'gauche':
+                    column--;
+                    break;
+                case 'droite':
+                    column++;
+                    break;
+            }
+
+            if (row < 1 || row > 4 || column < 1 || column > 4) {
+                this.elements.box.classList.add('out');
+                setTimeout(() => this.elements.box.classList.remove('out'), 500);
+
+                return;
+            }
+
+            this.elements.box.style.setProperty('--row', row.toString());
+            this.elements.box.style.setProperty('--column', column.toString());
+        }
     }
 
     private displayNotSupportedWarning(): void {

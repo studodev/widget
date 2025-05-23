@@ -10,15 +10,35 @@
 }
 
 #container {
-    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
     border: 2px solid var(--color-primary);
-    width: 600px;
-    height: 400px;
+    max-width: 600px;
+    width: 100%;
+    aspect-ratio: 1 / 1;
 }
 
 #box {
-    position: absolute;
-    width: 100px;
-    height: 100px;
+    --row: 1;
+    --column: 1;
+    grid-row: var(--row);
+    grid-column: var(--column);
     background-color: var(--color-secondary);
+}
+
+@keyframes flash {
+    25%  {
+        border: 3px solid var(--color-alert);
+    }
+    50%  {
+        border: 3px solid transparent;
+    }
+    75%  {
+        border: 3px solid var(--color-alert);
+    }
+}
+
+#box.out {
+    animation: flash 500ms;
 }
